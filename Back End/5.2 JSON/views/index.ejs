@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Taco Recipes</title>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+  </head>
+  <body>
+    <h1>Taco Town 🌮</h1>
+
+    <form action="/recipe" method="POST" class="buttons">
+      <button type="submit" value="chicken" name="choice">🍗</button>
+      <button type="submit" value="beef" name="choice">🥩</button>
+      <button type="submit" value="fish" name="choice">🐟</button>
+    </form>
+
+    <div id="recipeContainer">
+      <!-- Else, show the recipe name e.g. <h2>Recipe name</h2>-->
+      <% if (locals.recipe) { %>
+      <h2><%= recipe.name %> - $<%= recipe.price %></h2>
+      <h3>Ingredients:</h3>
+      <ul id="ingredientsList">
+        <li>
+          <strong>Protein:</strong> <%= recipe.ingredients.protein.name %> (<%=
+          recipe.ingredients.protein.preparation %>)
+        </li>
+        <li>
+          <strong>Salsa:</strong> <%= recipe.ingredients.salsa.name %>
+          (Spiciness: <%= recipe.ingredients.salsa.spiciness %>)
+        </li>
+        <% recipe.ingredients.toppings.forEach(topping => { %>
+        <li>
+          <strong><%= topping.name %></strong> - <%= topping.quantity %>
+          <ul>
+            <% topping.ingredients.forEach(ing => { %>
+            <li><%= ing %></li>
+            <% }) %>
+          </ul>
+        </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <!-- If no recipe yet, show: -->
+      <h2>Pick your favourite taco ingredient 👆</h2>
+      <% } %>
+    </div>
+  </body>
+</html>

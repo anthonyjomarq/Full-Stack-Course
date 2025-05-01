@@ -1,2 +1,475 @@
-Hello from NodeJS!
-Hello from Anthony!
+tournament.ejs
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tournaments - Anthony Esports Blog</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %> <%- include("partials/nav.ejs") %>
+    <section class="hero">
+      <h1>My Tournament Victories</h1>
+      <p>Showcasing my collegiate esports victories</p>
+    </section>
+    <section class="posts">
+      <h2>Tournament Wins</h2>
+      <div class="posts-grid">
+        <article class="post-card">
+          <img
+            src="images/SCAC Valorant champions.jpeg"
+            alt="SCAC Championship 2022"
+            class="clickable-image"
+            loading="lazy"
+            data-fullsize="images/SCAC Valorant champions.jpeg"
+          />
+          <div class="post-content">
+            <h3>SCAC Champions 2022</h3>
+            <p>
+              My first major collegiate win, marking the start of an incredible
+              esports journey.
+            </p>
+          </div>
+        </article>
+        <article class="post-card">
+          <img
+            src="images/HUE Fest Valorant Champions.jpeg"
+            alt="HUEFest Valorant Champions"
+            class="clickable-image"
+            loading="lazy"
+            data-fullsize="images/HUE Fest Valorant Champions.jpeg"
+          />
+          <div class="post-content">
+            <h3>HUEFest Valorant Champions 2023</h3>
+            <p>
+              A pivotal moment in my collegiate Valorant career, securing
+              victory at HUEFest.
+            </p>
+          </div>
+        </article>
+        <article class="post-card">
+          <img
+            src="images/Red bull Texas champions.jpeg"
+            alt="Red Bull Texas Champions"
+            class="clickable-image"
+            loading="lazy"
+            data-fullsize="images/Red bull Texas champions.jpeg"
+          />
+          <div class="post-content">
+            <h3>Red Bull Texas Champions 2022</h3>
+            <p>
+              An unforgettable experience, dominating the Red Bull Texas
+              Valorant tournament.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-image" src="" alt="Full-size image" />
+    </div>
+    <%- include("partials/footer.ejs") %>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll(".clickable-image");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.querySelector(".lightbox-image");
+        const closeButton = document.querySelector(".lightbox-close");
+
+        images.forEach((image) => {
+          image.addEventListener("click", () => {
+            lightboxImage.src = image.dataset.fullsize;
+            lightbox.style.display = "flex";
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+          });
+        });
+
+        closeButton.addEventListener("click", () => {
+          lightbox.style.display = "none";
+          document.body.style.overflow = "auto";
+        });
+
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        // Keyboard accessibility
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && lightbox.style.display === "flex") {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+news.ejs
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News - Anthony Esports Blog</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %> <%- include("partials/nav.ejs") %>
+    <section class="hero">
+      <h1>Esports News</h1>
+      <p>Latest updates and features on my esports journey</p>
+    </section>
+    <section class="posts">
+      <h2>Featured News</h2>
+      <div class="posts-grid">
+        <article class="post-card">
+          <img
+            src="/images/Houstonchronicles.png"
+            alt="Anthony Featured on Houston Chronicle Front Page"
+            class="clickable-image"
+            loading="lazy"
+            data-fullsize="/images/Houstonchronicles.png"
+          />
+          <div class="post-content">
+            <h3>Houston Chronicle Front Page Feature</h3>
+            <p>
+              The esports program creation earned a spotlight on the Houston
+              Chronicle's front page, showcasing my rise in collegiate esports.
+            </p>
+            <a
+              href="https://www.houstonchronicle.com/news/houston-texas/education/article/With-eyes-set-on-the-national-championship-16500799.php"
+              class="read-more"
+              target="_blank"
+              >Read Full Article</a
+            >
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">×</span>
+      <img class="lightbox-image" src="" alt="Full-size image" />
+    </div>
+    <%- include("partials/footer.ejs") %>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll(".clickable-image");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.querySelector(".lightbox-image");
+        const closeButton = document.querySelector(".lightbox-close");
+
+        images.forEach((image) => {
+          image.addEventListener("click", () => {
+            lightboxImage.src = image.dataset.fullsize;
+            lightbox.style.display = "flex";
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+          });
+        });
+
+        closeButton.addEventListener("click", () => {
+          lightbox.style.display = "none";
+          document.body.style.overflow = "auto";
+        });
+
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        // Keyboard accessibility
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && lightbox.style.display === "flex") {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+jerseys.ejs
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jerseys - Anthony Esports Blog</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %> <%- include("partials/nav.ejs") %>
+    <section class="hero">
+      <h1>Anthony's Esports Jerseys</h1>
+      <p>My iconic jerseys from a stellar esports career</p>
+    </section>
+    <section class="posts">
+      <h2>My Jerseys</h2>
+      <div class="posts-grid">
+        <article class="post-card">
+          <img
+            src="/images/captainJersey.png"
+            alt="Captain Jersey 2023"
+            class="clickable-image"
+            loading="lazy"
+            data-fullsize="/images/captainJersey.png"
+          />
+          <div class="post-content">
+            <h3>Team Captain Jersey 2023</h3>
+            <p>
+              My first official jersey as team captain, leading the squad to new
+              heights.
+            </p>
+          </div>
+        </article>
+        <article class="post-card">
+          <img
+            src="/images/RedbullJerseyBack.png"
+            alt="Red Bull Campus Clutch 2022 Jersey"
+            class="clickable-image"
+            loading="lazy"
+            data-fullsize="/images/RedbullJerseyBack.png"
+          />
+          <div class="post-content">
+            <h3>Red Bull Campus Clutch 2022</h3>
+            <p>
+              Worn during our thrilling second-place finish at the USA National
+              tournament.
+            </p>
+          </div>
+        </article>
+        <article class="post-card">
+          <img
+            src="/images/lastYearJersey.png"
+            alt="Final Semester Jersey 2024"
+            class="clickable-image"
+            loading="lazy"
+            data-fullsize="/images/lastYearJersey.png"
+          />
+          <div class="post-content">
+            <h3>Final Semester Jersey 2024</h3>
+            <p>
+              Commemorating my last semester with the team, filled with
+              unforgettable moments.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">×</span>
+      <img class="lightbox-image" src="" alt="Full-size image" />
+    </div>
+    <%- include("partials/footer.ejs") %>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const images = document.querySelectorAll(".clickable-image");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.querySelector(".lightbox-image");
+        const closeButton = document.querySelector(".lightbox-close");
+
+        images.forEach((image) => {
+          image.addEventListener("click", () => {
+            lightboxImage.src = image.dataset.fullsize;
+            lightbox.style.display = "flex";
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+          });
+        });
+
+        closeButton.addEventListener("click", () => {
+          lightbox.style.display = "none";
+          document.body.style.overflow = "auto";
+        });
+
+        lightbox.addEventListener("click", (e) => {
+          if (e.target === lightbox) {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        // Keyboard accessibility
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && lightbox.style.display === "flex") {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+index.ejs
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anthony Esports Blog</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %> <%- include("partials/nav.ejs") %>
+    <section class="hero">
+      <h1>Welcome to Anthony Esports Blog</h1>
+      <p>Your source for the latest in collegiate esports</p>
+    </section>
+    <section class="posts">
+      <h2>Latest Posts</h2>
+      <a href="/create" class="create-btn">Create New Post</a>
+      <% if (posts.length === 0) { %>
+      <p>No posts yet. Be the first to create one!</p>
+      <% } else { %>
+      <div class="posts-grid">
+        <% posts.forEach(post => { %>
+        <article class="post-card">
+          <% if (post.image) { %>
+          <img src="<%= post.image %>" alt="<%= post.title %>" loading="lazy" />
+          <% } %>
+          <div class="post-content">
+            <h3><%= post.title %></h3>
+            <p><%= post.summary || post.content.substring(0, 100) %>...</p>
+            <a href="/post/<%= post.id %>">Read More</a>
+          </div>
+          <div class="post-actions">
+            <a href="/edit/<%= post.id %>">Edit</a>
+            <form
+              action="/delete/<%= post.id %>"
+              method="POST"
+              style="display: inline"
+            >
+              <button type="submit">Delete</button>
+            </form>
+          </div>
+        </article>
+        <% }) %>
+      </div>
+      <% } %>
+    </section>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>
+
+edit.ejs 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Post - Collegiate Esports Hub</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %> <%- include("partials/nav.ejs") %>
+    <section class="posts">
+      <h2>Edit Post</h2>
+      <% if (typeof error !== 'undefined') { %>
+      <p style="color: red"><%= error %></p>
+      <% } %>
+      <form action="/edit/<%= post.id %>" method="POST">
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value="<%= post.title %>"
+          required
+        />
+
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required>
+<%= post.content %></textarea
+        >
+        <button type="submit">Update</button>
+      </form>
+      <a href="/" class="create-btn">Back to Home</a>
+    </section>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>
+
+
+create.ejs
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post - Collegiate Esports Hub</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %> <%- include("partials/nav.ejs") %>
+    <section class="posts">
+      <h2>Create New Post</h2>
+      <% if (typeof error !== 'undefined') { %>
+      <p style="color: red"><%= error %></p>
+      <% } %>
+      <form action="/create" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required />
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required></textarea>
+        <button type="submit">Create</button>
+      </form>
+      <a href="/" class="create-btn">Back to Home</a>
+    </section>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>
+
+nav.ejs
+
+<nav>
+  <ul>
+    <li>
+      <a href="/" class="<%= currentSection === 'home' ? 'active' : '' %>"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        href="/tournaments"
+        class="<%= currentSection === 'tournaments' ? 'active' : '' %>"
+        >Tournaments</a
+      >
+    </li>
+    <li>
+      <a
+        href="/jerseys"
+        class="<%= currentSection === 'jerseys' ? 'active' : '' %>"
+        >Jerseys</a
+      >
+    </li>
+    <li>
+      <a href="/news" class="<%= currentSection === 'news' ? 'active' : '' %>"
+        >News</a
+      >
+    </li>
+  </ul>
+</nav>
+
+header.ejs
+
+
+
+
+
+
